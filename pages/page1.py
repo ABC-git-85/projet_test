@@ -408,6 +408,20 @@ if chosen_airport_row['trigramme']:
 else:
     st.error("Aéroport non valide ou introuvable.")
 
+st.markdown(
+    f"""
+    <div class='tooltip'>☝️ Comment sont calculés les temps ?
+            <span class='tooltiptext'>
+                Les temps de retard sont calculés sur les vols au départ ou en provenance de l'aéroport depuis le premier vol de la journée.
+                L'évolution du retard est calculée par rapport au retard moyen de l'heure précédente.
+            </span>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
+st.divider()
+
 st.subheader("🌍 Carte des avions autour de l'aéroport")
 
 # Coordonnées de l'aéroport choisi
