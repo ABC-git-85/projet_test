@@ -413,7 +413,7 @@ st.markdown(
     f"""
     <div class='tooltip'>☝️ Comment sont calculés les temps ?
             <span class='tooltiptext'>
-                Les temps de retard sont calculés sur les vols au départ ou en provenance de l'aéroport depuis le premier vol de la journée.
+                Les temps de retard sont calculés sur les vols au départ et à l'arrivée à l'aéroport depuis le premier vol de la journée.
                 L'évolution du retard est calculée par rapport au retard moyen de l'heure précédente.
             </span>
     </div>
