@@ -118,7 +118,8 @@ def create_map(flight_data, airport_coords, radius_km):
                     "Longitude": longitude,
                     "Altitude (m)": altitude,
                     "Distance (km)": round(distance, 2),
-                    "Code Vol": flight['flight']['iataNumber'] or "Inconnu"
+                    "Code Vol": flight['flight']['iataNumber'] or "Inconnu",
+                    "Type d'appareil" : flight['aircraft']['iataCode']
                 })
         except KeyError:
             # Passer les vols qui ne possèdent pas les données nécessaires
@@ -368,17 +369,17 @@ if chosen_airport_row['trigramme']:
     moyenne_delays_departure_h = sum(df_delays_departure['delays_departure']) / len(df_delays_departure['delays_departure'])
     delta_departure = int(moyenne_delays_departure_t) - int(moyenne_delays_departure_h) if moyenne_delays_departure_h else None
     delta_display_departure = f"{'+' if delta_departure and delta_departure > 0 else ''}{delta_departure} min" if delta_departure is not None and delta_departure != 0 else "-"
-    delta_color_mode = "inverse" if delta_departure is not None and delta_departure != 0 else "off"
+    delta_color_mode_departure = "inverse" if delta_departure is not None and delta_departure != 0 else "off"
     # ARRIVEE - Filtre du df (retirer les valeurs 0 du calcul)
     df_delays_arrival = df[(df['arrival_airport'] == chosen_airport_row['trigramme'])  & (df['delays_arrival'] > 0)]
     moyenne_delays_arrival_h = sum(df_delays_arrival['delays_arrival']) / len(df_delays_arrival['delays_arrival'])
     delta_arrival = int(moyenne_delays_arrival_t) - int(moyenne_delays_arrival_h) if moyenne_delays_arrival_h else None
     delta_display_arrival = f"{'+' if delta_arrival and delta_arrival > 0 else ''}{delta_arrival} min" if delta_arrival is not None and delta_arrival != 0 else "-"
-    delta_color_mode = "inverse" if delta_arrival is not None and delta_arrival != 0 else "off"
+    delta_color_mode_arrival = "inverse" if delta_arrival is not None and delta_arrival != 0 else "off"
 
     # Afficher les métriques de départ et d'arrivée
-    col1.metric("Au départ", f"🛫 {int(moyenne_delays_departure_t)} min", delta_display_departure, delta_color=delta_color_mode)
-    col2.metric("À l'arrivée", f"🛬 {int(moyenne_delays_arrival_t)} min", delta_display_arrival, delta_color=delta_color_mode)
+    col1.metric("Au départ", f"🛫 {int(moyenne_delays_departure_t)} min", delta_display_departure, delta_color=delta_color_mode_departure)
+    col2.metric("À l'arrivée", f"🛬 {int(moyenne_delays_arrival_t)} min", delta_display_arrival, delta_color=delta_color_mode_arrival)
     
     # Obtenir les données météo
     weather_data = get_weather(chosen_airport_row['ville'])
@@ -458,7 +459,7 @@ st.divider()
 columns_order = [
     "Code Vol", "Compagnie", "Aéroport départ", "Aéroport arrivée",
     "Départ prévu", "Départ réel", "Arrivée prévue", "Arrivée estimée",
-    "Distance (km)", "Altitude (m)", "Latitude", "Longitude"
+    "Type d'appareil", "Distance (km)", "Altitude (m)", "Latitude", "Longitude"
 ]
 if nearby_flights:
     st.write("### 📍 Liste des vols repérés")
