@@ -17,7 +17,7 @@ with open(css_file, 'r', encoding='utf-8') as file:
     css = file.read()
     st.markdown(f"<style>{css}</style>", unsafe_allow_html=True)
 
-################################## PAGE ##################################
+###########################################################################
 
 st.title("💖 L'équipe")
 #st.header("👉 À propos de nous")
@@ -67,7 +67,7 @@ with col1:
     </div>
     """, unsafe_allow_html=True)
    
-    spacer, cv, spacer = st.columns([0.5, 1, 0.5])
+    spacer, cv, spacer = st.columns([0.5,1,0.5])
     with cv:
         with open("docs/cv_abesse.pdf", "rb") as f:
             st.download_button(label="Télécharger le CV", data=f, file_name="cv_abesse.pdf", mime="application/pdf")
@@ -114,7 +114,7 @@ with col2:
     </div>
     """, unsafe_allow_html=True)    
 
-    spacer, cv, spacer = st.columns([0.5, 1, 0.5])
+    spacer, cv, spacer = st.columns([0.5,1,0.5])
     with cv:
         with open("docs/cv_lsebille.pdf", "rb") as f:
             st.download_button(label="Télécharger le CV", data=f, file_name="cv_lsebille.pdf", mime="application/pdf")
@@ -161,7 +161,7 @@ with col3:
     </div>
     """, unsafe_allow_html=True)
     
-    spacer, cv, spacer = st.columns([0.5, 1, 0.5])
+    spacer, cv, spacer = st.columns([0.5,1,0.5])
     with cv:
         with open("docs/cv_sle_loch.pdf", "rb") as f:
             st.download_button(label="Télécharger le CV", data=f, file_name="cv_sle_loch.pdf", mime="application/pdf")
