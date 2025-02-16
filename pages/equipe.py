@@ -82,7 +82,7 @@ st.title("💖 L'équipe")
 # Informations des membres
 members = [
 {
-    "image": "images/amandine.jpg",
+    "image": "https://github.com/ABC-git-85/projet_test/blob/main/images/amandine.jpg?raw=true",
     "name": "Amandine 👋",
     "linkedin": "https://www.linkedin.com/in/amandine-bessé-2153b1143",
     "github": "https://github.com/ABC-git-85",
