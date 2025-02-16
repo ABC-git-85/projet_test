@@ -77,7 +77,7 @@ def get_weather(city_name):
     else:
         return None
 
-###########################################################################
+################################### Fx ###################################
 
 # CARTE - Création de la carte Folium
 def create_map(flight_data, airport_coords, radius_km):
